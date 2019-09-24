@@ -1,12 +1,15 @@
 package rs.itbootcamp.humanity.page.objects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HumanityStaff {
 
-	private static final String URL = "https://testerinc.humanity.com/app/staff/list/load/true/";
+	public static final String URL = "https://testerinc.humanity.com/app/staff/list/load/true/";
 	private static final String ADD_EMPLOYEES_BUTTON_XPATH = "//button[@id='act_primary']";
 	private static final String FIRST_NAME_AND_LAST_NAME_FIRST_PART_XPATH = "//a[contains(text(),'";
 	private static final String FIRST_NAME_AND_LAST_NAME_LAST_PART_XPATH = "')]";
@@ -15,6 +18,7 @@ public class HumanityStaff {
 	private static final String LAST_NAME_EMPLOYEE_1_XPATH = "//input[@id='_asl1']";
 	private static final String EMAIL_EMPLOYEE_1_XPATH = "//input[@id='_ase1']";
 	private static final String SAVE_EMPLOYEES_BUTTON_XPATH="//button[@id='_as_save_multiple']";
+	private static final String ALL_EMPLOYEES_TABLE_XPATH = "//table[contains(@class,'employeesList')]//tbody";
 	private static final String UPLOAD_PICTURE_BUTTON_XPATH="//input[@id='fileupload']";
 	
 	// method that clicks on the chosen employee (one that we select)
@@ -102,8 +106,5 @@ public class HumanityStaff {
 		getSaveEmployeesButton(driver).click();
 	}
 	
-	
-	
-	
-	
+		
 }
