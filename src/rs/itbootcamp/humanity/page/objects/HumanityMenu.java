@@ -18,6 +18,7 @@ public class HumanityMenu {
 	private static final String AVATAR_XPATH = "//img[@id='tr_avatar']";
 	private static final String ARROW_DOWN_BUTTON_XPATH = "//i[@class='icon icon-arrowFullDn j-arrowIconToAvatar navBottom__userArrow']";
 	private static final String PROFILE_BUTTON_XPATH = "//a[contains(text(),'Profile')]";
+	private static final String GEAR_SETTINGS_BUTTON_XPATH = "//i[@class='primNavQtip__icon icon-gear']";
 	private static final String SETTINGS_BUTTON_XPATH = "//div[@class='userm userm-mainPage']//a[contains(text(),'Settings')]";
 	private static final String AVAILABILITY_BUTTON_XPATH = "//div[@class='userm userm-mainPage']//a[contains(text(),'Availability')]";
 	private static final String SIGN_OUT_BUTTON_XPATH = "//a[contains(text(),'Sign Out')]";
@@ -149,7 +150,7 @@ public class HumanityMenu {
 		return driver.findElement(By.xpath(AVAILABILITY_BUTTON_XPATH));
 	}
 
-	// method clicks on "Settings" button next to avatar
+	// method clicks on "Availability" button next to avatar
 	public static void clickOnAvailabilityButton(WebDriver driver) {
 		getAvailabilityButton(driver).click();
 	}
@@ -172,6 +173,16 @@ public class HumanityMenu {
 	// method that finds version number of the Humanity app
 	public static String versionNumber(WebDriver driver) {
 		return getHumanityAppVersion(driver).findElement(By.tagName("b")).getText();
+	}
+	
+	// method finds gear button "Settings" next to avatar
+	public static WebElement getGearSettingsButton(WebDriver driver) {
+		return driver.findElement(By.xpath(GEAR_SETTINGS_BUTTON_XPATH));
+	}
+
+	// method clicks on gear button "Settings" next to avatar
+	public static void clickOnGearSettingsButton(WebDriver driver) {
+		getGearSettingsButton(driver).click();
 	}
 
 }

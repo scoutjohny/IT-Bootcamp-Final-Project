@@ -56,9 +56,13 @@ public class HumanityHome {
 	}
 
 	// method fills in the valid email into the "Email/Username" field
-
 	public static void inputEmail(WebDriver driver) {
 		getEmailField(driver).sendKeys(USERNAME);
+	}
+	
+	// method fills in any valid email into the "Email/Username" field
+	public static void inputAnyEmail(WebDriver driver, String email) {
+		getEmailField(driver).sendKeys(email);
 	}
 
 	// method finds "Password" field
@@ -72,9 +76,13 @@ public class HumanityHome {
 	}
 
 	// method fills in the valid password into the "Password" field
-
 	public static void inputPassword(WebDriver driver) {
 		getPasswordField(driver).sendKeys(PASSWORD);
+	}
+	
+	// method fills in any valid password into the "Password" field
+	public static void inputAnyPassword(WebDriver driver, String password) {
+		getPasswordField(driver).sendKeys(password);
 	}
 
 	// method finds "Log In" button on the Log In page

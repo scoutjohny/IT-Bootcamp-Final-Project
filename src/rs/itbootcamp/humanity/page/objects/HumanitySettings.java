@@ -2,6 +2,7 @@ package rs.itbootcamp.humanity.page.objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class HumanitySettings {
@@ -10,6 +11,7 @@ public class HumanitySettings {
 	private static final String COUNTRY_DROP_DOWN_MENU_XPATH = "//select[@id='country']";
 	private static final String LANGUAGE_DROP_DOWN_MENU_XPATH = "//select[@name='language']";
 	private static final String TIME_FORMAT_DROP_DOWN_MENU_XPATH = "//select[@name='pref_24hr']";
+	private static final String SAVE_SETTINGS_BUTTON_XPATH ="//button[@id='_save_settings_button']";
 	
 	//method directs browser to the settings url
 	public static void goToUrl(WebDriver driver) {
@@ -38,12 +40,22 @@ public class HumanitySettings {
 	
 	//method finds "Time Format" drop down menu
 	public static Select getTimeFormat(WebDriver driver) {
-		return new Select(driver.findElement(By.xpath(LANGUAGE_DROP_DOWN_MENU_XPATH)));
+		return new Select(driver.findElement(By.xpath(TIME_FORMAT_DROP_DOWN_MENU_XPATH)));
 	}
 			
 	//method chooses preferred time format
 	public static void selectTimeFormat(WebDriver driver, String timeFormat) {
 		getTimeFormat(driver).selectByVisibleText(timeFormat);
+	}
+	
+	//method that finds "Save Settings" button
+	public static WebElement getSaveSettingsButton(WebDriver driver) {
+		return driver.findElement(By.xpath(SAVE_SETTINGS_BUTTON_XPATH));
+	}
+			
+	// method that clicks on the "Save Settings" button
+	public static void clickSaveSettingsButton(WebDriver driver) {
+		getSaveSettingsButton(driver).click();
 	}
 
 }
