@@ -49,7 +49,7 @@ public class HumanityLoginTestsApachePOI {
 				}
 						
 		}catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(e.toString()); //transforms exception message to string
 			System.out.println("Something went wrong in the automated Login process");
 		
 		}finally{
@@ -58,9 +58,11 @@ public class HumanityLoginTestsApachePOI {
 		}
 		Thread.sleep(3000);
 		Assert.assertEquals(driver.getCurrentUrl(), HumanityMenu.URL,"Nesto se ne load-uje kako treba!"); //checks if the current URL of the new page corresponds to the HumanityMenu URL
+		System.out.println("Test successful!");
 	}catch (AssertionError ae) {
 		Assert.fail();
-		System.out.println(ae.getMessage());
+		System.out.println(ae.getMessage()); //transforms exception message to string
+		System.out.println("Test unsuccessful!");
 	}finally {
 		
 		driver.quit(); //closes the Browser

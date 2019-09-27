@@ -46,7 +46,7 @@ public class HumanityAddNewEmployeesApachePOI {
 		int rowcount1=sheet1.getLastRowNum(); //counts the number of rows
 		
 		try {
-			HSSFRow r1=sheet1.getRow(1);
+			HSSFRow r1=sheet1.getRow(1); //gets the second row, containing login data
 				if(r1!=null) {
 					String email=r1.getCell(0).getStringCellValue(); //gets String value for email from Data.xls
 					String password=r1.getCell(1).getStringCellValue(); //gets String value for password from Data.xls
@@ -58,7 +58,7 @@ public class HumanityAddNewEmployeesApachePOI {
 				}
 						
 		}catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(e.toString()); //transforms exception message to string
 			System.out.println("Something went wrong in the automated Login process");
 		
 		}finally{
@@ -77,13 +77,13 @@ public class HumanityAddNewEmployeesApachePOI {
 		try {
 			
 			for (int i=1;i<rowcount2;i++) {
-				HSSFRow r2=sheet2.getRow(i);
+				HSSFRow r2=sheet2.getRow(i); //gets the i-th row, containing user data
 				if(r2!=null) {
 					String firstName=r2.getCell(0).getStringCellValue(); //gets String value for First Name
 					String lastName=r2.getCell(1).getStringCellValue(); //gets String value for Last Name
 					String email=r2.getCell(2).getStringCellValue(); //gets String value for email
-					addedEmployees.add(firstName+" "+lastName);
-					System.out.println(addedEmployees);
+					addedEmployees.add(firstName+" "+lastName); // this adds the newly entered employee into new employees list
+					System.out.println(addedEmployees); //prints out all the members of the new employees list
 					HumanityStaff.inputFirstNameField(driver, i, firstName); //sets First Name
 					HumanityStaff.inputLastNameField(driver, i, lastName); //sets Last Name
 					HumanityStaff.inputEmailField(driver, i, email); //sets email
@@ -94,12 +94,12 @@ public class HumanityAddNewEmployeesApachePOI {
 			}
 			
 		}catch(Exception e) {
-			System.out.println(e.toString());
+			System.out.println(e.toString()); //transforms exception message to string
 		}finally{
 			HumanityStaff.clickSaveEmployeesButton(driver); //clicks on the "Save Employees" button
 			Thread.sleep(5000);
 			System.out.println("Automated process of adding employees completed!");
-			wbe.close(); //closes the Excell file
+			wbe.close(); //closes the Excel file
 		}
 		Thread.sleep(5000);
 						
@@ -108,17 +108,18 @@ public class HumanityAddNewEmployeesApachePOI {
 		driver.navigate().back(); //returns the browser to the "staff" page
 		Thread.sleep(2000);
 		
-		List<WebElement> list = driver.findElements(By.className("j-employee-row"));
-		List<String> list1=new ArrayList<>();
+		List<WebElement> list = driver.findElements(By.className("j-employee-row")); //creates a list of web elements that contain data from all the employees
+		List<String> list1=new ArrayList<>(); //creates a new String list
 		for(WebElement l:list) {
 			list1.add(l.getAttribute("Title")); //gets the first and last name, contained in the tile of the field
 			System.out.println(list1);
 		}
 		Assert.assertTrue(list1.containsAll(addedEmployees)); //checks if the list of all employees has all of the added employees
-		
+		System.out.println("Test successful!");
 		}catch (AssertionError ae) {
-			Assert.fail();
-			System.out.println(ae.getMessage());
+			Assert.fail(); // marks the test as failed
+			System.out.println(ae.getMessage()); //transforms exception message to string
+			System.out.println("Test unsuccessful!");
 		}finally {
 			
 			driver.quit(); //closes the Browser

@@ -22,6 +22,8 @@ public class HumanityStaff {
 	private static final String EMAIL_EMPLOYEE_XPATH = "//input[@id='_ase";
 	private static final String SAVE_EMPLOYEES_BUTTON_XPATH="//button[@id='_as_save_multiple']";
 	private static final String UPLOAD_PICTURE_BUTTON_XPATH="//input[@id='fileupload']";
+	private static final String ADDED_EMPLOYEE_XPATH = "//a[contains(text(),'Predrag Predragovic')]";
+	private static final String CLICK_HERE_XPATH = "//a[contains(text(),'Click Here')]";
 	
 	// method that clicks on the chosen employee (one that we select)
 	public static void chooseEmployee(WebDriver driver, String name) {
@@ -151,6 +153,26 @@ public class HumanityStaff {
 	// method that clicks on the "Save Employees" button
 	public static void clickSaveEmployeesButton(WebDriver driver) {
 		getSaveEmployeesButton(driver).click();
+	}
+	
+	// method that finds the newly created employee
+	public static WebElement getNewEmployee(WebDriver driver) {
+		return driver.findElement(By.xpath(ADDED_EMPLOYEE_XPATH));
+	}
+				
+	// method that clicks on the newly created employee
+	public static void clickNewEmployee(WebDriver driver) {
+		getNewEmployee(driver).click();
+	}
+	
+	// method that finds the "click here" button
+	public static WebElement getClickHereButton(WebDriver driver) {
+		return driver.findElement(By.xpath(CLICK_HERE_XPATH));
+	}
+					
+	// method that clicks on the "click here" button
+	public static void clickClickHereButton(WebDriver driver) {
+		getClickHereButton(driver).click();
 	}
 	
 		

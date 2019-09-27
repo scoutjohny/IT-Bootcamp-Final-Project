@@ -60,6 +60,11 @@ public class HumanityHome {
 		getEmailField(driver).sendKeys(USERNAME);
 	}
 	
+	// method fills in the invalid email into the "Email/Username" field
+	public static void inputInvalidEmail(WebDriver driver) {
+		getEmailField(driver).sendKeys("USERNAME");
+	}
+	
 	// method fills in any valid email into the "Email/Username" field
 	public static void inputAnyEmail(WebDriver driver, String email) {
 		getEmailField(driver).sendKeys(email);
@@ -78,6 +83,11 @@ public class HumanityHome {
 	// method fills in the valid password into the "Password" field
 	public static void inputPassword(WebDriver driver) {
 		getPasswordField(driver).sendKeys(PASSWORD);
+	}
+	
+	// method fills in the invalid password into the "Password" field
+	public static void inputInvalidPassword(WebDriver driver) {
+		getPasswordField(driver).sendKeys("PASSWORD");
 	}
 	
 	// method fills in any valid password into the "Password" field
@@ -130,8 +140,7 @@ public class HumanityHome {
 		return driver.findElement(By.xpath(START_MY_FREE_TRIAL_BUTTON2_XPATH));
 	}
 
-	// method clicks on "START MY FREE TRIAL" button (to the right from LOGIN
-	// button)
+	// method clicks on "START MY FREE TRIAL" button (to the right from LOGIN button)
 	public static void clickStartMyFreeTrialButton2(WebDriver driver) {
 		getStartMyFreeTrialButton2(driver).click();
 	}

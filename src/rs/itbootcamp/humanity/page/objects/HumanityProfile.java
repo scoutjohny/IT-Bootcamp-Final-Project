@@ -11,6 +11,7 @@ public class HumanityProfile {
 	private static final String EDIT_DETAILS_BUTTON_XPATH = "//a[contains(text(),'Edit Details')]";
 	private static final String UPLOAD_PICTURE_BUTTON_XPATH="//input[@id='fileupload']";
 	private static final String NICK_NAME_XPATH = "//input[@id='nick_name']";
+	private static final String DELETE_PICTURE_XPATH = "//span[@id='deleteSpan']";
 	
 	//method that finds "Save Employee" button
 	public static WebElement getSaveEmployeeButton(WebDriver driver) {
@@ -47,9 +48,24 @@ public class HumanityProfile {
 		getNickNameButton(driver).click();
 	}
 	
+	// method that clears on the "Nick Name" button
+	public static void clearNickNameButton(WebDriver driver) {
+		getNickNameButton(driver).clear();
+	}
+	
 	// method that clicks on the "Nick Name" button
 	public static void inputNickNameButton(WebDriver driver, String nickname) {
 		getNickNameButton(driver).sendKeys(nickname);
+	}
+	
+	//method that finds "delete" button
+	public static WebElement getDeleteButton(WebDriver driver) {
+		return driver.findElement(By.xpath(DELETE_PICTURE_XPATH));
+	}
+					
+	// method that clicks on the "Delete" button
+	public static void clickDeleteButton(WebDriver driver) {
+		getDeleteButton(driver).click();
 	}
 
 }

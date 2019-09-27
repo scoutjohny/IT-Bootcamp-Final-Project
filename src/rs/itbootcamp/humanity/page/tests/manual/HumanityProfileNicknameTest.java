@@ -13,9 +13,10 @@ import rs.itbootcamp.humanity.page.objects.HumanityHome;
 import rs.itbootcamp.humanity.page.objects.HumanityMenu;
 import rs.itbootcamp.humanity.page.objects.HumanityProfile;
 
-public class HumanityMenyProfileTest {
-@Test
-	public static void testUploadAvatarPicture() throws InterruptedException {
+public class HumanityProfileNicknameTest {
+
+	@Test
+	public static void nicknameSetTest() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe"); //sets the starting properties for browser control
 		WebDriver driver = new ChromeDriver(); //creates the new webdriver for Google Chrome
 		try {
@@ -33,27 +34,22 @@ public class HumanityMenyProfileTest {
 			HumanityMenu.clickOnArrowDownButton(driver); //clicks on arrow down button
 			HumanityMenu.clickOnProfileButton(driver); //clicks on profile button
 			HumanityProfile.clickEditDetailsButton(driver); //clicks on edit detail button
-			HumanityProfile.uploadPicture(driver); //upload avatar picture from pre chosen location
-			Thread.sleep(5000); //pauses the testing for 5 seconds
-			Assert.assertNotEquals(driver.findElement(By.className("j-user-avatar-settings")).getAttribute("src"), "https://d3l54fgzztlejs.cloudfront.net/app/layout/images/no_avatar.png", "Bad upload!"); //checks if the url of the new avatar picture is different from the default url of no avatar picture
+			String nickname="Dzoni";
+			HumanityProfile.clearNickNameButton(driver);
+			HumanityProfile.inputNickNameButton(driver, nickname);
+			Thread.sleep(5000);
+			HumanityProfile.clickSaveEmployeeButton(driver);
+			Thread.sleep(5000);
+			Assert.assertEquals(driver.findElement(By.xpath("//input[@id='nick_name']")).getAttribute("value"),nickname,"Nickanme not setted correctly!");
 			System.out.println("Test successful!");
 		}catch (AssertionError ae) {
-			Assert.fail(); //marks test as failed
-			System.out.println(ae.getMessage()); //transforms exception message to string
-			System.out.println("Test unsuccessful!");
-		}finally {
-			//deleting the newly added avatar picture
-			HumanityProfile.clickEditDetailsButton(driver); //clicks on edit detail button
-			Thread.sleep(2000); //pauses the testing for 2 seconds
-			HumanityProfile.clickDeleteButton(driver);
-			Thread.sleep(2000); //pauses the testing for 5 seconds
-			
-			//Controlling the pop-up choices
-			Alert alert = driver.switchTo().alert(); //switches control from website to the pop-up window
-			Thread.sleep(2000); //pauses the testing for 5 seconds
-			alert.accept(); //clicks on "OK" button
-			Thread.sleep(2000); //pauses the testing for 5 seconds
-			driver.quit(); //closes the Browser
-		}
+		Assert.fail(); //marks test as failed
+		System.out.println(ae.getMessage()); //transforms exception message to string
+		System.out.println("Test unsuccessful!");
+	}finally {
+		
+		driver.quit(); //closes the Browser
+	}
 }
 }
+

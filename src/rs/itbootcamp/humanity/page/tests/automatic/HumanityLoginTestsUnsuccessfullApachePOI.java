@@ -36,7 +36,7 @@ public class HumanityLoginTestsUnsuccessfullApachePOI {
 		int rowcount1=sheet1.getLastRowNum(); //counts the number of rows
 		
 		try {
-			HSSFRow r1=sheet1.getRow(2);
+			HSSFRow r1=sheet1.getRow(2); //gets the third row, containing invalid login data
 				if(r1!=null) {
 					String email=r1.getCell(0).getStringCellValue(); //gets String value for email from Data.xls
 					String password=r1.getCell(1).getStringCellValue(); //gets String value for password from Data.xls
@@ -48,7 +48,7 @@ public class HumanityLoginTestsUnsuccessfullApachePOI {
 				}
 						
 		}catch (Exception e) {
-			System.out.println(e.toString());
+			System.out.println(e.toString()); //transforms exception message to string
 			System.out.println("Something went wrong in the automated Login process");
 		
 		}finally{
@@ -57,9 +57,11 @@ public class HumanityLoginTestsUnsuccessfullApachePOI {
 		}
 		Thread.sleep(3000);
 		Assert.assertNotEquals(driver.getCurrentUrl(), HumanityMenu.URL,"Nesto se ne load-uje kako treba!"); //checks if the current URL of the new page corresponds to the HumanityMenu URL
+		System.out.println("Test successful!");
 	}catch (AssertionError ae) {
-		Assert.fail();
-		System.out.println(ae.getMessage());
+		Assert.fail(); // marks test as failed!
+		System.out.println(ae.getMessage()); //transforms exception message to string
+		System.out.println("Test unsuccessful!");
 	}finally {
 		
 		driver.quit(); //closes the Browser
